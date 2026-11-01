@@ -27,9 +27,9 @@ Home Assistant pilote la marche, l'arrêt, le chauffage, la consigne et les vite
 modèle et le rappel de filtre, qu'il sait aussi remettre à zéro. Il suit les changements faits à la commande murale,
 et celle-ci affiche les siens. Le verrouillage de la commande murale et le bip fonctionnent aussi.
 
-<img src="images/carte-lovelace.png" width="340" alt="Carte Home Assistant d'une clim Hitachi à l'arrêt">
+<img src="images/carte-lovelace.png" width="340" alt="Carte Home Assistant d'une clim Hitachi en chauffage">
 
-*La carte fournie dans ce dépôt, unité à l'arrêt : la température extérieure n'est alors pas connue.*
+*La carte fournie dans ce dépôt, unité en chauffage.*
 
 À savoir :
 
