@@ -1,8 +1,8 @@
 # Piloter une clim gainable Hitachi RAD-QPB dans Home Assistant via H-LINK
 
 Un ESP32 branché sur la prise H-LINK `CN1101` de l'unité intérieure transforme la clim en thermostat dans
-Home Assistant : en local, sans cloud, sans boîtier du commerce. La commande murale reste en place et
-continue de fonctionner.
+Home Assistant : en local, sans cloud, sans boîtier du commerce, pour environ 20 € par unité. La commande
+murale reste en place et continue de fonctionner.
 
 Ce guide adapte aux gainables RAD-QPB le projet [esphome-hlink-ac](https://github.com/lumixen/esphome-hlink-ac)
 de lumixen. Le composant et le protocole viennent de ce projet et de ses prédécesseurs : voir
@@ -58,9 +58,38 @@ modèle, partez de la [notice du projet](https://github.com/lumixen/esphome-hlin
 Ces liens mènent aux annonces où nous avons acheté, sans affiliation. Les variantes et les prix peuvent changer :
 vérifiez-les avant de commander.
 
-> Retour d'achat : environ 39 € pour deux unités avec des pièces de rechange, frais d'importation compris.
+> Retour d'achat : environ 39 € pour ces 4 annonces, de quoi équiper deux unités avec des pièces de rechange,
+> frais d'importation compris. Les fils Dupont, les barrettes et l'outillage ne sont pas dans ce prix.
 > Une de nos 3 cartes ESP32 avait une adresse MAC vide et le WiFi la refusait : contrôlez les vôtres
 > avec `esptool read-mac`.
+
+## Face à l'adaptateur Wi-Fi Hitachi
+
+Hitachi vend ses propres adaptateurs Wi-Fi. Pour deux unités, ce montage revient environ 4 fois moins cher et
+ne dépend d'aucun serveur du fabricant.
+
+| | Ce montage | Adaptateur Wi-Fi Hitachi |
+|---|---|---|
+| **Prix pour une unité** | environ 20 € | environ 80 à 105 € |
+| **Prix pour deux unités** | environ 39 €, avec des pièces de rechange | environ 160 à 210 € |
+| **Liaison** | en local | par le cloud Hitachi, avec un compte airCloud |
+| **Home Assistant** | thermostat par ESPHome | intégration ou script qui passe par le cloud Hitachi |
+| **Sur RAD-QPB** | fonctionne sur RAD-18QPB et RAD-25QPB | non confirmé |
+| **Pose** | soudure, programmation, câblage | accessoire prêt à brancher |
+
+Prix relevés en novembre 2026 pour une unité : [78 € le SPX-WFG03](https://climaled.fr/en/hitachi-spx-wfg03-aircloud-home-wifi-kit-interface-app-control),
+[97,20 €](https://climaled.fr/en/hitachi-spx-wfg02-aircloud-home-wifi-kit-interface-app-control-console-ducted-cassette-wall)
+et [105 €](https://www.keroclima.pt/Hitachi-Modulo-WiFi-SPX-WFG02/en) le SPX-WFG02. Ils peuvent changer. Nous n'avons
+ni acheté ni essayé ces adaptateurs.
+
+- **Compatibilité :** nous n'avons trouvé aucune liste qui cite le RAD-QPB. Le SPX-WFG03 est annoncé pour d'autres
+  séries, et la [brochure airCloud Home](https://cdn.shopify.com/s/files/1/0699/0892/2679/files/Hitachi-Aircloud-WIFI-Modules.pdf)
+  renvoie à un représentant Hitachi pour confirmer chaque modèle. Certaines clims Hitachi
+  [ne peuvent pas être connectées](https://www.hitachiaircon.com/ranges/iot-apps-controllers/ac-wifi-adapter-aircloud-home).
+  Demandez confirmation avant d'acheter.
+- **Dans Home Assistant :** le [sujet HACF sur airCloud](https://forum.hacf.fr/t/integration-hitachi-aircloud/15662)
+  décrit cette autre solution, avec des scripts ou une intégration AirCloud. Un membre en est satisfait,
+  d'autres rapportent des serveurs Hitachi peu fiables ou un script qui fonctionne de moins en moins bien.
 
 ## Le principe
 
@@ -267,6 +296,8 @@ devinez pas le sens : le montage étant soudé, vous ne pouvez plus le mesurer 
 - [Let me control you: Hitachi air conditioner](https://hackaday.io/project/168959-let-me-control-you-hitachi-air-conditioner)
   de Florian, [hitachi HVAC controler](https://hackaday.io/project/179797-hitachi-hvac-controler-for-homeassistant-esp8266)
   de Vince et [hi-arduino](https://github.com/farom57/hi-arduino/) : travaux sur le protocole, crédités par lumixen.
+- [Integration Hitachi airCloud](https://forum.hacf.fr/t/integration-hitachi-aircloud/15662) sur le forum HACF :
+  l'autre solution, par l'adaptateur Wi-Fi Hitachi et son cloud.
 - Manuel de service Hitachi n° 0600E (décembre 2014), RAD-18/25/35/50QPB : brochage p. 61, haute tension et
   attente p. 82, unités multiples p. 9. Il est cité, pas reproduit ici.
 
