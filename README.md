@@ -45,12 +45,18 @@ modèle, partez de la [notice du projet](https://github.com/lumixen/esphome-hlin
 
 ## Matériel, par unité
 
-- **ESP32** 30 broches avec prise USB ;
-- **abaisseur 12 V → 5 V à sortie fixe**. Vérifiez la variante : une sortie 9 ou 12 V grillerait l'ESP32 ;
-- **adaptateur de niveau 3,3 V ↔ 5 V**, 4 canaux, avec ses 2 rangées de 6 trous ;
-- **câble JST PA 2,0 mm, 6 broches, vers Dupont femelle**. 10 cm ont suffi ;
+- **ESP32** 30 broches avec prise USB : [notre annonce](https://fr.aliexpress.com/item/1005007059457759.html), variante « 30P CH340 Type-C » ;
+- **abaisseur 12 V → 5 V à sortie fixe** : [notre annonce](https://fr.aliexpress.com/item/1005013039262983.html), variantes « 3A 5V » et « 3 PCS ».
+  Vérifiez bien la sortie : 9 ou 12 V grilleraient l'ESP32 ;
+- **adaptateur de niveau 3,3 V ↔ 5 V**, 4 canaux, avec ses 2 rangées de 6 trous : [notre annonce](https://fr.aliexpress.com/item/1005005984772131.html) ;
+- **câble JST PA 2,0 mm, 6 broches, vers Dupont femelle** : [notre annonce](https://fr.aliexpress.com/item/1005011960702845.html), options
+  « DuPont-Female », « 6P » et « 10CM ». Sur cette annonce, « Quantité par paquet » désigne le nombre de fils et
+  « Épingles » la longueur ;
 - **6 fils Dupont femelle-femelle** et **2 barrettes de 6 broches** ;
 - un fer à souder, de l'étain, un multimètre, un cutter, un feutre, de la gaine ou du ruban isolant.
+
+Ces liens mènent aux annonces où nous avons acheté, sans affiliation. Les variantes et les prix peuvent changer :
+vérifiez-les avant de commander.
 
 > Retour d'achat : environ 39 € pour deux unités avec des pièces de rechange, frais d'importation compris.
 > Une de nos 3 cartes ESP32 avait une adresse MAC vide et le WiFi la refusait : contrôlez les vôtres
