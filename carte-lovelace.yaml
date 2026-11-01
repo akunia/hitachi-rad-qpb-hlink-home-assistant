@@ -1,0 +1,51 @@
+# Exemple de carte pour une unité, à coller dans l'éditeur YAML d'une carte manuelle.
+# Remplacez clim_hitachi_1 par le nom de la vôtre et vérifiez chaque nom d'entité.
+type: vertical-stack
+cards:
+  - type: thermostat
+    entity: climate.clim_hitachi_1
+    name: Clim Hitachi 1
+    show_current_as_primary: true
+    features:
+      - type: climate-hvac-modes
+        hvac_modes:
+          - heat
+          - cool
+          - dry
+          - fan_only
+          - heat_cool
+          - "off"
+      - type: climate-fan-modes
+        style: dropdown
+        fan_modes:
+          - auto
+          - quiet
+          - low
+          - medium
+          - high
+      - type: climate-preset-modes
+        style: dropdown
+        preset_modes:
+          - none
+          - away
+  - type: entities
+    entities:
+      - entity: sensor.clim_hitachi_1_temperature_exterieure
+        name: Température extérieure
+      - entity: binary_sensor.clim_hitachi_1_filtre_a_nettoyer
+        name: Filtre à nettoyer
+      - entity: switch.clim_hitachi_1_verrouillage_commande
+        name: Verrouillage commande murale
+      - entity: switch.clim_hitachi_1_bip
+        name: Bip
+      - type: button
+        name: Remise à zéro filtre
+        icon: mdi:air-filter
+        action_name: Effacer
+        tap_action:
+          action: perform-action
+          perform_action: button.press
+          target:
+            entity_id: button.clim_hitachi_1_remise_a_zero_filtre
+          confirmation:
+            text: Le filtre a-t-il bien été nettoyé ?

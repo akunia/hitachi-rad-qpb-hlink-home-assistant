@@ -1,0 +1,88 @@
+# Module ESPHome pour une unité Hitachi RAD-QPB, prise H-LINK CN1101.
+# Une copie de ce fichier par unité : changez name, friendly_name et le nom de la clé (api_key_1, api_key_2).
+# Modèle compilé avec ESPHome 2026.9.1 et de faux secrets, repris d'une configuration essayée sur une unité.
+# Ce fichier précis n'a pas tourné sur une unité. Ne dépassez pas ESPHome 2027.2 (voir README).
+
+esphome:
+  name: clim-hitachi-1
+  # Nom de l'appareil dans Home Assistant ; HA le place devant le nom de chaque élément
+  friendly_name: Clim Hitachi 1
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf # exigé par le composant hlink_ac
+
+# Journal sur le port USB ; la clim utilise une autre liaison série (broches 16 et 17)
+logger:
+
+# Liaison chiffrée avec Home Assistant
+api:
+  encryption:
+    key: !secret api_key_1
+
+# Mises à jour suivantes par le WiFi
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid # réseau 2,4 GHz : l'ESP32 ne capte pas le 5 GHz
+  password: !secret wifi_password
+  # Point d'accès de secours si le WiFi de la maison est injoignable
+  ap:
+    ssid: "Clim Hitachi secours"
+    password: !secret ap_password
+
+captive_portal:
+
+# Liaison H-LINK avec la clim : 9600 bauds, parité impaire (notice lumixen)
+uart:
+  id: hitachi_bus
+  tx_pin: GPIO17
+  rx_pin: GPIO16
+  baud_rate: 9600
+  parity: ODD
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/lumixen/esphome-hlink-ac.git
+      ref: 2026.9.0
+    components: [hlink_ac]
+
+climate:
+  - platform: hlink_ac
+    name: None # prend le nom de l'appareil : climate.clim_hitachi_1
+    hvac_actions: true # affiche ce que fait l'unité : chauffe, refroidit, ventile
+    supported_presets:
+      - AWAY
+
+switch:
+  - platform: hlink_ac
+    remote_lock:
+      name: "Verrouillage commande"
+    beeper:
+      name: "Bip"
+
+button:
+  - platform: hlink_ac
+    reset_air_filter_warning:
+      name: "Remise à zéro filtre"
+
+sensor:
+  - platform: hlink_ac
+    indoor_temperature:
+      name: "Température intérieure"
+    outdoor_temperature:
+      name: "Température extérieure"
+
+binary_sensor:
+  - platform: hlink_ac
+    air_filter_warning:
+      name: "Filtre à nettoyer"
+
+text_sensor:
+  - platform: hlink_ac
+    model_name:
+      name: "Modèle"
