@@ -27,6 +27,10 @@ Home Assistant pilote la marche, l'arrêt, le chauffage, la consigne et les vite
 modèle et le rappel de filtre, qu'il sait aussi remettre à zéro. Il suit les changements faits à la commande murale,
 et celle-ci affiche les siens. Le verrouillage de la commande murale et le bip fonctionnent aussi.
 
+<img src="images/carte-lovelace.png" width="340" alt="Carte Home Assistant d'une clim Hitachi à l'arrêt">
+
+*La carte fournie dans ce dépôt, unité à l'arrêt : la température extérieure n'est alors pas connue.*
+
 À savoir :
 
 - **Température extérieure :** elle n'est disponible que lorsque l'unité tourne.
@@ -49,44 +53,44 @@ modèle, partez de la [notice du projet](https://github.com/lumixen/esphome-hlin
 - **abaisseur 12 V → 5 V à sortie fixe** : [notre annonce](https://fr.aliexpress.com/item/1005013039262983.html), variantes « 3A 5V » et « 3 PCS ».
   Vérifiez bien la sortie : 9 ou 12 V grilleraient l'ESP32 ;
 - **adaptateur de niveau 3,3 V ↔ 5 V**, 4 canaux, avec ses 2 rangées de 6 trous : [notre annonce](https://fr.aliexpress.com/item/1005005984772131.html) ;
-- **câble JST PA 2,0 mm, 6 broches, vers Dupont femelle** : [notre annonce](https://fr.aliexpress.com/item/1005011960702845.html), options
-  « DuPont-Female », « 6P » et « 10CM ». Sur cette annonce, « Quantité par paquet » désigne le nombre de fils et
-  « Épingles » la longueur ;
+- **câble JST PA 2,0 mm, 6 broches, vers Dupont femelle** : [annonce équivalente](https://fr.aliexpress.com/item/1005012865097555.html), options
+  « DuPont-Female », « 10cm » et « 6 heures », qui désigne ici 6 fils. Notre annonce d'origine n'est plus proposée en
+  France et celle-ci n'a pas été essayée : son connecteur peut demander la même retouche que le nôtre ;
 - **6 fils Dupont femelle-femelle** et **2 barrettes de 6 broches** ;
 - un fer à souder, de l'étain, un multimètre, un cutter, un feutre, de la gaine ou du ruban isolant.
 
-Ces liens mènent aux annonces où nous avons acheté, sans affiliation. Les variantes et les prix peuvent changer :
+Ces liens mènent aux annonces où nous avons acheté, sauf celle du câble, sans affiliation. Les variantes et les prix peuvent changer :
 vérifiez-les avant de commander.
 
-> Retour d'achat : environ 39 € pour ces 4 annonces, de quoi équiper deux unités avec des pièces de rechange,
+> Retour d'achat : environ 39 € pour ces 4 articles, de quoi équiper deux unités avec des pièces de rechange,
 > frais d'importation compris. Les fils Dupont, les barrettes et l'outillage ne sont pas dans ce prix.
 > Une de nos 3 cartes ESP32 avait une adresse MAC vide et le WiFi la refusait : contrôlez les vôtres
 > avec `esptool read-mac`.
 
 ## Face à l'adaptateur Wi-Fi Hitachi
 
-Hitachi vend ses propres adaptateurs Wi-Fi. Pour deux unités, ce montage revient environ 4 fois moins cher et
-ne dépend d'aucun serveur du fabricant.
+Hitachi vend ses propres adaptateurs Wi-Fi. Pour deux unités, ce montage revient 4 à 5 fois moins cher que le
+SPX-WFG02 et ne dépend d'aucun serveur du fabricant.
 
-| | Ce montage | Adaptateur Wi-Fi Hitachi |
+| | Ce montage | Adaptateur Hitachi SPX-WFG02 |
 |---|---|---|
-| **Prix pour une unité** | environ 20 € | environ 80 à 105 € |
-| **Prix pour deux unités** | environ 39 €, avec des pièces de rechange | environ 160 à 210 € |
+| **Prix pour une unité** | environ 20 € | environ 100 € |
+| **Prix pour deux unités** | environ 39 €, avec des pièces de rechange | environ 200 € |
 | **Liaison** | en local | par le cloud Hitachi, avec un compte airCloud |
 | **Home Assistant** | thermostat par ESPHome | intégration ou script qui passe par le cloud Hitachi |
 | **Sur RAD-QPB** | fonctionne sur RAD-18QPB et RAD-25QPB | non confirmé |
 | **Pose** | soudure, programmation, câblage | accessoire prêt à brancher |
 
-Prix relevés en novembre 2026 pour une unité : [78 € le SPX-WFG03](https://climaled.fr/en/hitachi-spx-wfg03-aircloud-home-wifi-kit-interface-app-control),
-[97,20 €](https://climaled.fr/en/hitachi-spx-wfg02-aircloud-home-wifi-kit-interface-app-control-console-ducted-cassette-wall)
-et [105 €](https://www.keroclima.pt/Hitachi-Modulo-WiFi-SPX-WFG02/en) le SPX-WFG02. Ils peuvent changer. Nous n'avons
-ni acheté ni essayé ces adaptateurs.
+Prix relevés en novembre 2026 : [97,20 €](https://climaled.fr/en/hitachi-spx-wfg02-aircloud-home-wifi-kit-interface-app-control-console-ducted-cassette-wall)
+et [105 €](https://www.keroclima.pt/Hitachi-Modulo-WiFi-SPX-WFG02/en) l'unité. Ils peuvent changer. Nous n'avons ni acheté
+ni essayé cet adaptateur.
 
-- **Compatibilité :** nous n'avons trouvé aucune liste qui cite le RAD-QPB. Le SPX-WFG03 est annoncé pour d'autres
-  séries, et la [brochure airCloud Home](https://cdn.shopify.com/s/files/1/0699/0892/2679/files/Hitachi-Aircloud-WIFI-Modules.pdf)
+- **Compatibilité :** nous n'avons trouvé aucune liste qui cite le RAD-QPB. Un revendeur présente le SPX-WFG02
+  comme valable pour toutes les clims Hitachi, mais la [brochure airCloud Home](https://cdn.shopify.com/s/files/1/0699/0892/2679/files/Hitachi-Aircloud-WIFI-Modules.pdf)
   renvoie à un représentant Hitachi pour confirmer chaque modèle. Certaines clims Hitachi
   [ne peuvent pas être connectées](https://www.hitachiaircon.com/ranges/iot-apps-controllers/ac-wifi-adapter-aircloud-home).
-  Demandez confirmation avant d'acheter.
+  Demandez confirmation avant d'acheter. Nous n'avons pas retenu le [SPX-WFG03](https://climaled.fr/en/hitachi-spx-wfg03-aircloud-home-wifi-kit-interface-app-control),
+  moins cher, car il est annoncé pour d'autres séries.
 - **Dans Home Assistant :** le [sujet HACF sur airCloud](https://forum.hacf.fr/t/integration-hitachi-aircloud/15662)
   décrit cette autre solution, avec des scripts ou une intégration AirCloud. Un membre en est satisfait,
   d'autres rapportent des serveurs Hitachi peu fiables ou un script qui fonctionne de moins en moins bien.
