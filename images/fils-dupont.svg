@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-label="Dessin de quatre fils de couleur terminés par des embouts noirs à chaque bout">
+        <rect width="300" height="300" fill="#fff"/>
+        <g fill="none" stroke-width="7" stroke-linecap="round">
+          <path d="M78,70 C130,40 170,100 222,70" stroke="#dc2626"/>
+          <path d="M78,125 C130,95 170,155 222,125" stroke="#ea580c"/>
+          <path d="M78,180 C130,150 170,210 222,180" stroke="#16a34a"/>
+          <path d="M78,235 C130,205 170,265 222,235" stroke="#2563eb"/>
+        </g>
+        <g fill="#1f2937">
+          <rect x="36" y="60" width="44" height="20" rx="3"/><rect x="220" y="60" width="44" height="20" rx="3"/>
+          <rect x="36" y="115" width="44" height="20" rx="3"/><rect x="220" y="115" width="44" height="20" rx="3"/>
+          <rect x="36" y="170" width="44" height="20" rx="3"/><rect x="220" y="170" width="44" height="20" rx="3"/>
+          <rect x="36" y="225" width="44" height="20" rx="3"/><rect x="220" y="225" width="44" height="20" rx="3"/>
+        </g>
+      </svg>
