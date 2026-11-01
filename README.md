@@ -47,22 +47,29 @@ et celle-ci affiche les siens. Le verrouillage de la commande murale et le bip f
 Le recul est encore court. Le manuel couvre aussi les RAD-35QPB et RAD-50QPB, qui n'ont pas été essayés. Sur un autre
 modèle, partez de la [notice du projet](https://github.com/lumixen/esphome-hlink-ac).
 
-## Matériel, par unité
+## Matériel
 
-- **ESP32** 30 broches avec prise USB : [notre annonce](https://fr.aliexpress.com/item/1005007059457759.html), variante « 30P CH340 Type-C » ;
-- **abaisseur 12 V → 5 V à sortie fixe** : [notre annonce](https://fr.aliexpress.com/item/1005013039262983.html), variantes « 3A 5V » et « 3 PCS ».
-  Vérifiez bien la sortie : 9 ou 12 V grilleraient l'ESP32 ;
-- **adaptateur de niveau 3,3 V ↔ 5 V**, 4 canaux, avec ses 2 rangées de 6 trous : [notre annonce](https://fr.aliexpress.com/item/1005005984772131.html) ;
-- **câble JST PA 2,0 mm, 6 broches, vers Dupont femelle** : [annonce équivalente](https://fr.aliexpress.com/item/1005012865097555.html), options
-  « DuPont-Female », « 10cm » et « 6 heures », qui désigne ici 6 fils. Notre annonce d'origine n'est plus proposée en
-  France et celle-ci n'a pas été essayée : son connecteur peut demander la même retouche que le nôtre ;
-- **6 fils Dupont femelle-femelle** et **2 barrettes de 6 broches** ;
-- un fer à souder, de l'étain, un multimètre, un cutter, un feutre, de la gaine ou du ruban isolant.
+Il faut une pièce de chaque par unité. Voici notre commande pour deux unités, avec des pièces de rechange.
 
-Ces liens mènent aux annonces où nous avons acheté, sauf celle du câble, sans affiliation. Les variantes et les prix peuvent changer :
-vérifiez-les avant de commander.
+| Photo | Pièce | Quantité | Prix |
+|:---:|---|---|---|
+| <a href="https://fr.aliexpress.com/item/1005007059457759.html"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sd5b8cff8042943efa32322fc173c1016u.jpg" width="120" alt="Cartes ESP32"></a> | **[ESP32](https://fr.aliexpress.com/item/1005007059457759.html)** 30 broches, prise USB<br>Variante « 30P CH340 Type-C » | 3 (2 + 1 de rechange) | 4,69 € pièce |
+| <a href="https://fr.aliexpress.com/item/1005013039262983.html"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S3feaaa313e5f4355baf6bdb34eeff47dO.jpg" width="120" alt="Module abaisseur"></a> | **[Abaisseur 12 V → 5 V](https://fr.aliexpress.com/item/1005013039262983.html)** à sortie fixe<br>Variantes « 3A 5V » et « 3 PCS ». Vérifiez bien la sortie : 9 ou 12 V grilleraient l'ESP32 | 3 (2 + 1 de rechange) | 3,59 € les 3 |
+| <a href="https://fr.aliexpress.com/item/1005005984772131.html"><img src="https://ae-pic-a1.aliexpress-media.com/kf/Sed8d2ca3249e43429e3b126f0a7465197.jpg" width="120" alt="Adaptateurs de niveau"></a> | **[Adaptateur de niveau 3,3 V ↔ 5 V](https://fr.aliexpress.com/item/1005005984772131.html)**, 4 canaux, avec ses 2 rangées de 6 trous | 1 lot de 10 | 2,96 € le lot |
+| <a href="https://fr.aliexpress.com/item/1005012865097555.html"><img src="https://ae-pic-a1.aliexpress-media.com/kf/S34ff298ab8be413a9e9183ecc1f91e0cU.jpg" width="120" alt="Câbles à prise blanche et embouts Dupont femelles"></a> | **[Câble JST PA 2,0 mm, 6 broches, vers Dupont femelle](https://fr.aliexpress.com/item/1005012865097555.html)**<br>Options « DuPont-Female », « 10cm » et « 6 heures », qui désigne ici 6 fils | 1 lot de 5 | 3,69 € le lot |
+| <a href="https://fr.aliexpress.com/item/1847754499.html"><img src="images/fils-dupont.svg" width="120" alt="Dessin de fils Dupont"></a> | **[Fils Dupont femelle-femelle](https://fr.aliexpress.com/item/1847754499.html)**, 20 cm, 6 par unité | 1 lot de 40 | 1,82 € le lot |
 
-> Retour d'achat : environ 39 € pour ces 4 articles, de quoi équiper deux unités avec des pièces de rechange,
+Il vous faut aussi **2 barrettes de 6 broches** par unité, un fer à souder, de l'étain, un multimètre, un cutter, un feutre,
+de la gaine ou du ruban isolant.
+
+Ces liens mènent aux annonces où nous avons acheté, sauf pour le câble et les fils Dupont, sans affiliation. Les photos
+viennent de ces annonces et appartiennent à leurs vendeurs. Les prix ne comprennent pas les frais d'importation. Pour le câble et
+les fils Dupont, ce sont des prix relevés en novembre 2026. Les variantes et les prix peuvent changer : vérifiez-les avant de commander.
+
+Notre annonce d'origine pour le câble n'est plus proposée en France. Celle-ci n'a pas été essayée : son connecteur
+peut demander la même retouche que le nôtre.
+
+> Retour d'achat : environ 39 € pour les 4 premières lignes, de quoi équiper deux unités avec des pièces de rechange,
 > frais d'importation compris. Les fils Dupont, les barrettes et l'outillage ne sont pas dans ce prix.
 > Une de nos 3 cartes ESP32 avait une adresse MAC vide et le WiFi la refusait : contrôlez les vôtres
 > avec `esptool read-mac`.
