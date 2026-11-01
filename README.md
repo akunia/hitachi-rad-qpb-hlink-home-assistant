@@ -18,28 +18,30 @@ de lumixen. Le composant et le protocole viennent de ce projet et de ses prédé
 > votre installation et peut affecter sa garantie : vous le réalisez sous votre responsabilité. En cas de
 > doute, faites appel à une personne qualifiée.
 
-## Ce qui a été essayé
+## Ce qui marche
 
-Essai du 1er novembre 2026 sur **un RAD-18QPB et un RAD-25QPB** reliés au même groupe extérieur RAM-40NP2B,
-avec commandes filaires SPX-WKT3, ESPHome 2026.9.1 et le composant en version 2026.9.0. Les fichiers de ce dépôt
-reprennent la configuration essayée sous d'autres noms : ils compilent, mais n'ont pas tourné tels quels sur une unité.
+**Le montage fonctionne sur un RAD-18QPB et un RAD-25QPB** reliés au même groupe extérieur RAM-40NP2B, avec des
+commandes filaires SPX-WKT3, ESPHome 2026.9.1 et le composant en version 2026.9.0.
 
-| Fonction | Résultat |
-|---|---|
-| Marche, arrêt, chauffage, consigne, vitesses forte et auto | **Marche** sur les deux unités, affiché sur la commande murale |
-| Commande murale vers Home Assistant | **Marche** |
-| Température intérieure, modèle, rappel de filtre | **Marche** |
-| Remise à zéro du rappel de filtre | **Effectuée** sur les deux unités |
-| Température extérieure | **Marche**, seulement quand l'unité tourne |
-| Verrouillage de la commande murale, bip | **Marche** |
-| Mode absence | Activé et affiché à la commande murale. Home Assistant annonce la vitesse forte, la commande murale auto. Maintien en température non observé |
-| Froid | L'unité annonce « refroidit », sur un essai très court. Air froid non constaté |
-| Mode auto | Accepté sur une seule unité, essai très court |
-| Déshumidification, ventilation seule, vitesses silencieux, faible et moyenne | **Pas essayés** |
-| Balayage | Sans objet sur des bouches de soufflage statiques. Le vertical reste proposé, sans effet. L'horizontal est refusé |
+Home Assistant pilote la marche, l'arrêt, le chauffage, la consigne et les vitesses. Il lit les températures, le
+modèle et le rappel de filtre, qu'il sait aussi remettre à zéro. Il suit les changements faits à la commande murale,
+et celle-ci affiche les siens. Le verrouillage de la commande murale et le bip fonctionnent aussi.
 
-Le recul est de quelques heures. Le manuel couvre aussi les RAD-35QPB et RAD-50QPB, qui n'ont pas été
-essayés. Sur un autre modèle, partez de la [notice du projet](https://github.com/lumixen/esphome-hlink-ac).
+À savoir :
+
+- **Température extérieure :** elle n'est disponible que lorsque l'unité tourne.
+- **Mode absence :** activé et affiché à la commande murale. Home Assistant annonce la vitesse forte, la commande
+  murale auto. Le maintien en température n'a pas été observé.
+- **Froid et mode auto :** essais très courts. En froid, l'unité annonce « refroidit », sans que l'air froid ait été
+  constaté. Le mode auto n'a été accepté que sur une unité.
+- **Pas encore essayés :** déshumidification, ventilation seule, vitesses silencieux, faible et moyenne.
+- **Balayage :** sans objet sur des bouches de soufflage statiques. Le vertical reste proposé, sans effet.
+  L'horizontal est refusé.
+- **Fichiers de ce dépôt :** ils reprennent la configuration essayée sous d'autres noms. Ils compilent, mais n'ont
+  pas tourné tels quels sur une unité.
+
+Le recul est encore court. Le manuel couvre aussi les RAD-35QPB et RAD-50QPB, qui n'ont pas été essayés. Sur un autre
+modèle, partez de la [notice du projet](https://github.com/lumixen/esphome-hlink-ac).
 
 ## Matériel, par unité
 
@@ -50,8 +52,8 @@ essayés. Sur un autre modèle, partez de la [notice du projet](https://github.c
 - **6 fils Dupont femelle-femelle** et **2 barrettes de 6 broches** ;
 - un fer à souder, de l'étain, un multimètre, un cutter, un feutre, de la gaine ou du ruban isolant.
 
-> Retour d'achat : environ 39 € pour deux unités avec des pièces de rechange, frais d'importation compris, en
-> octobre 2026. Une de nos 3 cartes ESP32 avait une adresse MAC vide et le WiFi la refusait : contrôlez les vôtres
+> Retour d'achat : environ 39 € pour deux unités avec des pièces de rechange, frais d'importation compris.
+> Une de nos 3 cartes ESP32 avait une adresse MAC vide et le WiFi la refusait : contrôlez les vôtres
 > avec `esptool read-mac`.
 
 ## Le principe
