@@ -153,6 +153,11 @@ irait sur l'entrée de la clim et pourrait l'abîmer. Cette mesure se fait donc 
    haut gauche de la carte. Ne touchez pas à `CN1102`, celle de la commande murale.
 2. Présentez le câble sans forcer. Le nôtre n'entrait qu'à moitié : il a fallu retailler le plastique de sa
    prise au cutter, ce qui supprime son détrompeur.
+
+   <img src="https://github.com/user-attachments/assets/c3a940ff-2fc4-4db0-8c6e-d144ddded614" width="360" alt="Deux prises à 6 broches côte à côte, celle de droite amincie à la lime">
+
+   *Photo de [lumixen](https://github.com/lumixen/esphome-hlink-ac) : à droite, une prise HY2.0 amincie à la lime pour entrer dans la prise H-LINK.*
+
 3. **Numérotez les fils** de 1 à 6 d'un bord à l'autre de la prise, avec du ruban, en suivant chaque fil
    jusqu'à son embout.
 4. Branchez le câble seul. Écartez les 6 embouts : ils ne doivent toucher ni un autre embout ni le boîtier.
@@ -296,7 +301,7 @@ devinez pas le sens : le montage étant soudé, vous ne pouvez plus le mesurer 
 ## Sources et crédits
 
 - [esphome-hlink-ac](https://github.com/lumixen/esphome-hlink-ac) de lumixen (Max Bodaniuk), licence MIT :
-  composant ESPHome, protocole H-LINK, câblage de référence, liaison de la broche 6, exemple de configuration.
+  composant ESPHome, protocole H-LINK, câblage de référence, liaison de la broche 6, exemple de configuration, photo de la prise amincie.
 - [Let me control you: Hitachi air conditioner](https://hackaday.io/project/168959-let-me-control-you-hitachi-air-conditioner)
   de Florian, [hitachi HVAC controler](https://hackaday.io/project/179797-hitachi-hvac-controler-for-homeassistant-esp8266)
   de Vince et [hi-arduino](https://github.com/farom57/hi-arduino/) : travaux sur le protocole, crédités par lumixen.
