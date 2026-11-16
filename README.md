@@ -23,7 +23,7 @@ de lumixen. Le composant et le protocole viennent de ce projet et de ses prédé
 **Le montage fonctionne sur un RAD-18QPB et un RAD-25QPB** reliés au même groupe extérieur RAM-40NP2B, avec des
 commandes filaires SPX-WKT3, ESPHome 2026.9.1 et le composant en version 2026.9.0.
 
-Home Assistant pilote la marche, l'arrêt, le chauffage, la consigne et les vitesses. Il lit les températures, le
+Home Assistant pilote la marche, l'arrêt, le chauffage, la consigne et une partie des vitesses. Il lit les températures, le
 modèle et le rappel de filtre, qu'il sait aussi remettre à zéro. Il suit les changements faits à la commande murale,
 et celle-ci affiche les siens. Le verrouillage de la commande murale et le bip fonctionnent aussi.
 
@@ -132,14 +132,13 @@ Home Assistant n'a pas été essayé.
 1. Copiez [`secrets.example.yaml`](secrets.example.yaml) sous le nom `secrets.yaml` et remplissez-le. Ne
    partagez jamais ce fichier.
 2. Pour chaque unité, partez de [`clim-hitachi.yaml`](clim-hitachi.yaml) et donnez-lui ses propres `name`,
-   `friendly_name` et clé (`api_key_1`, `api_key_2`).
+   `friendly_name`, nom de réseau de secours (`ap:`) et clé (`api_key_1`, `api_key_2`).
 3. Installez : `esphome run clim-hitachi.yaml`.
 4. Ajoutez le module dans Home Assistant par l'intégration ESPHome, avec son adresse, le port 6053 et sa
    clé. Tant qu'il n'est pas branché sur la clim, ses valeurs restent vides : c'est normal.
 
-Les mises à jour suivantes passent par le WiFi. **Ne dépassez pas ESPHome 2027.2** : la compilation avertit que
-`check_uart_settings()`, utilisée par le composant, sera retirée d'ESPHome 2027.3.0. Seule la version 2026.9.1 a été
-essayée.
+Les mises à jour suivantes passent par le WiFi. Seule **ESPHome 2026.9.1** a été essayée. Le
+composant utilise `check_uart_settings()`, qu'ESPHome 2027.3.0 retirera : il faudra alors une version adaptée du composant.
 
 **Contrôle :** ESP32 sur USB et rien d'autre de branché, vous devez lire environ 5 V entre `VIN` et `GND`,
 et environ 3,3 V entre `3V3` et `GND`. Repérez aussi le voyant d'alimentation. Débranchez ensuite l'USB : il
@@ -223,8 +222,8 @@ l'abaisseur : il ne doit toucher ni la carte ni le métal.
 1. Courant coupé depuis 15 minutes, immobilisez l'abaisseur sur un support isolant et rebranchez la prise, trait
    contre trait. Les embouts des demi-fils ne se touchent pas et restent hors du boîtier, comme à l'étape 2.
 2. Remettez le courant, mains hors du boîtier, et mesurez entre un embout `OUT+` et un embout `OUT−`.
-3. **Entre 4,75 et 5,25 V : passez à la suite.** Autour de 0 V, la prise est sans doute à l'envers. Pour cette
-   valeur comme pour toute autre, coupez aussitôt le courant et n'allez pas plus loin.
+3. **Entre 4,75 et 5,25 V : passez à la suite.** Sinon, 0 V compris, coupez aussitôt le courant et n'allez pas
+   plus loin. Ne retournez jamais la prise : les fils sont soudés.
 4. Coupez, attendez 15 minutes, débranchez la prise.
 
 ![Mesure des 5 V dans les embouts des demi-fils](images/mesure-5v.svg)
@@ -259,8 +258,9 @@ vos pièces.
 
 Avant de remettre le courant :
 
-- isolez et fixez tout : rien ne doit toucher la carte ni le métal, aucun module ne doit pouvoir bouger ;
-- immobilisez le câble : la prise n'a plus de verrouillage ;
+- isolez les soudures et fixez les modules sur un support isolant : rien ne doit toucher la carte ni le métal ;
+- immobilisez fils et prise : la prise n'a plus de verrouillage, aucun fil Dupont ne doit pouvoir se détacher ;
+- évitez les endroits chauds, humides ou soumis aux vibrations ;
 - gardez l'antenne de l'ESP32 loin du métal ;
 - laissez l'USB débranché : l'ESP32 aurait deux alimentations, et votre ordinateur serait relié à la carte.
 
@@ -291,8 +291,9 @@ devinez pas le sens : le montage étant soudé, vous ne pouvez plus le mesurer 
   environ 3 minutes (manuel, p. 18).
 - **WiFi :** capot fermé, nous lisons -71 et -79 dBm. À -79 dBm, le signal est faible : surveillez les passages
   en « indisponible ».
-- **Non vérifiés :** le courant disponible sur le 12 V de `CN1101`, et l'isolement de cette prise par rapport au
-  secteur. Ne reliez jamais à un ordinateur un module branché sur la clim.
+- **Non vérifiés :** le courant disponible sur le 12 V de `CN1101`, sa protection contre les surintensités et son
+  isolement par rapport au secteur. Deux unités qui fonctionnent ne prouvent pas qu'un montage permanent est sûr. Ne
+  reliez jamais à un ordinateur un module branché sur la clim.
 - **Carte Home Assistant :** un exemple est dans [`carte-lovelace.yaml`](carte-lovelace.yaml). Collez-le dans
   l'éditeur YAML d'une carte manuelle, et vérifiez chaque nom d'entité.
 
@@ -301,7 +302,7 @@ devinez pas le sens : le montage étant soudé, vous ne pouvez plus le mesurer 
 | Symptôme | À vérifier |
 |---|---|
 | L'ESP32 ne s'allume pas | 12 V à l'entrée de l'abaisseur, 5 V à sa sortie, fil sur `VIN` |
-| L'ESP32 est en ligne, mais le thermostat reste vide | Broche 6 à la masse, parité `ODD`, puis inversez les broches 2 et 4 côté adaptateur |
+| L'ESP32 est en ligne, mais le thermostat reste vide | Hors tension : broche 6 à la masse, parité `ODD`, broche 4 → `HV3`/`LV3` → GPIO16, broche 2 → `HV4`/`LV4` → GPIO17. Ne permutez pas de fils au hasard |
 | Valeurs incohérentes, commandes sans effet | Masse commune entre tous les modules, `LV` sur le 3,3 V, `HV` sur le 5 V |
 | Toujours rien | Capteurs de diagnostic décrits dans la notice du projet, puis discussion sur le projet avec votre modèle exact |
 
@@ -317,5 +318,5 @@ devinez pas le sens : le montage étant soudé, vous ne pouvez plus le mesurer 
 - Manuel de service Hitachi n° 0600E (décembre 2014), RAD-18/25/35/50QPB : brochage p. 61, haute tension et
   attente p. 82, unités multiples p. 9. Il est cité, pas reproduit ici.
 
-Le guide, les photos, les dessins et la configuration sont publiés sous licence MIT. L'avis de licence du projet source est
-repris dans [LICENSE](LICENSE).
+Le texte, nos photos, nos dessins et la configuration sont publiés sous licence MIT. Les photos de tiers (vendeurs,
+lumixen) restent à leurs auteurs. L'avis de licence du projet source est repris dans [LICENSE](LICENSE).

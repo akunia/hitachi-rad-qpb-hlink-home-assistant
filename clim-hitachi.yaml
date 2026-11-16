@@ -1,7 +1,7 @@
 # Module ESPHome pour une unité Hitachi RAD-QPB, prise H-LINK CN1101.
-# Une copie de ce fichier par unité : changez name, friendly_name et le nom de la clé (api_key_1, api_key_2).
+# Une copie de ce fichier par unité : changez name, friendly_name, le ssid de ap et le nom de la clé (api_key_1, api_key_2).
 # Modèle compilé avec ESPHome 2026.9.1 et de faux secrets, repris d'une configuration essayée sur une unité.
-# Ce fichier précis n'a pas tourné sur une unité. Ne dépassez pas ESPHome 2027.2 (voir README).
+# Ce fichier précis n'a pas tourné sur une unité. Seule ESPHome 2026.9.1 a été essayée (voir README).
 
 esphome:
   name: clim-hitachi-1
@@ -31,7 +31,7 @@ wifi:
   password: !secret wifi_password
   # Point d'accès de secours si le WiFi de la maison est injoignable
   ap:
-    ssid: "Clim Hitachi secours"
+    ssid: "Clim Hitachi 1 secours"
     password: !secret ap_password
 
 captive_portal:

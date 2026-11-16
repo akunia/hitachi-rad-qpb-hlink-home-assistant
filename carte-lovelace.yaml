@@ -1,5 +1,6 @@
 # Exemple de carte pour une unité, à coller dans l'éditeur YAML d'une carte manuelle.
 # Remplacez clim_hitachi_1 par le nom de la vôtre et vérifiez chaque nom d'entité.
+# Les modes et vitesses proposés n'ont pas tous été essayés : voir les limites du README.
 type: vertical-stack
 cards:
   - type: thermostat
